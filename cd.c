@@ -1,14 +1,19 @@
 
-char *remove_quotes()
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+//char *remove_quotes()
 
 int path(char *cd, char *command)
 {
     char *temp;
 
-    temp = remove_quotes(command);
-    if (temp == "--")
+    //temp = remove_quotes(command);
+    if (!strncmp(temp, "-", 2))
     {
-        chdir(env($OLDPWD));
+        chdir(getenv("OLDPWD"));
         return 0;
     }
     chdir(temp);
@@ -18,13 +23,16 @@ int path(char *cd, char *command)
     {
         free(temp);
         //cambiar oldpwd a pwd actual
+        return 0;
     }
+    free(temp);
+    return 1;
 }
 
 int main(int argc, char **argv)
 {
     if (argc == 2) //solo ponen cd
-        chdir(env($HOME));
+        chdir(getenv("HOME"));
     else if (argc == 3) //ponen cd y algo
         path(argv[1], argv[2]);
 
