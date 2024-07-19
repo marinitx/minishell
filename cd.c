@@ -32,7 +32,9 @@ int path(char *cd, char *command)
 int main(int argc, char **argv)
 {
     if (argc == 2) //solo ponen cd
+    {
         chdir(getenv("HOME"));
+    }
     else if (argc == 3) //ponen cd y algo
         path(argv[1], argv[2]);
 
