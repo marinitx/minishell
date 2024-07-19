@@ -37,5 +37,7 @@ int main(int argc, char **argv)
     }
     else if (argc == 3) //ponen cd y algo
         path(argv[1], argv[2]);
+    else if (argc >= 3)
+        printf("error: too many arguments") //aqui debería hacer un printerror y así puedo cambiar la salida al numero de error
 
 }
